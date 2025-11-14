@@ -15,70 +15,189 @@ body {
 }
 
 /* -------------------------------
-   HERO / HEADER SECTION
+   NAVIGATION BAR - DESKTOP
 --------------------------------*/
-header {
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;      /* group everything in the center */
+    gap: 1.5rem;                  /* distance: Wappen - links - Zirkel */
+    padding: 0 1.5rem;
+    z-index: 999;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.nav-left,
+.nav-right {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* LOGOS: fill navbar height on desktop, glow only on hover */
+.nav-logo {
+    height: 100%;          /* use full navbar height */
+    max-height: 90px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: none;
+    transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.9));
+    opacity: 0.95;
+}
+
+/* Zirkel is broader & shorter – boost it a bit on desktop */
+@media (min-width: 769px) {
+    .zirkel-fix {
+        height: 110%;          /* slightly taller than navbar to compensate padding */
+        max-height: none;
+        object-fit: cover;     /* let it crop a tiny bit if needed */
+    }
+}
+
+/* NAV LINKS sit between the logos */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a {
+    color: #f4f4f4;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.4rem;
+}
+
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    margin: 4px 0;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* Push content below navbar */
+.hero {
+    margin-top: 90px;
+}
+
+/* -------------------------------
+   HERO SECTION
+--------------------------------*/
+.hero {
     position: relative;
     height: 90vh;
-    background: url('my-website/images/28.jpg') no-repeat center center/cover;
+    background: url('images/28.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-header::before {
-    content: "";
+.hero-overlay {
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6); /* transparent black overlay */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
-header .content {
+.hero-content {
     position: relative;
     z-index: 2;
     max-width: 900px;
     padding: 2rem;
-    color: #fff;
 }
 
-header h1 {
-    font-size: 2.8rem;
+.hero-content h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
     margin-bottom: 1.5rem;
     font-weight: 700;
 }
 
-header p {
-    font-size: 1.1rem;
+.hero-content p {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    margin-bottom: 1.5rem;
     line-height: 1.8;
-    margin-bottom: 1.5rem;
 }
 
-header ul {
+.hero-content ul {
     list-style: none;
-    padding-left: 0;
     margin-bottom: 1.5rem;
 }
 
-header ul li::before {
+.hero-content ul li::before {
     content: "•";
-    color: #00baff;
-    font-weight: bold;
-    display: inline-block;
+    color: #ffffff;
     width: 1.2em;
 }
 
-header ul li {
-    text-align: left;
+.hero-content ul li {
     display: inline-block;
     margin: 0.3rem 1rem;
-    font-size: 1rem;
 }
 
 /* -------------------------------
-   MAIN SECTION - GALLERY
+   ABOUT SECTION
+--------------------------------*/
+.about {
+    background-color: #1a1a1a;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+.about p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: auto;
+    color: #ccc;
+}
+
+/* -------------------------------
+   EVENTS / GALLERY
 --------------------------------*/
 main {
     background-color: #f9f9f9;
@@ -89,18 +208,15 @@ main {
 .gallery {
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     padding: 2rem 1.5rem;
-    margin: 3rem auto;
     max-width: 900px;
+    margin: 3rem auto;
     text-align: center;
 }
 
 .gallery h2 {
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
-    color: #222;
-    position: relative;
 }
 
 .gallery h2::after {
@@ -108,7 +224,7 @@ main {
     display: block;
     width: 60px;
     height: 3px;
-    background: #0073e6;
+    background: #ccc;
     margin: 0.75rem auto 0;
     border-radius: 2px;
 }
@@ -117,29 +233,8 @@ main {
     width: 100%;
     max-width: 800px;
     height: 600px;
-    margin: 0 auto;
-    display: block;
-    border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
     border: none;
-    overflow: hidden;
-}
-
-.insta-link {
-    margin-top: 1.5rem;
-}
-
-.insta-link a {
-    font-size: 1.1rem;
-    color: #0073e6;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.insta-link a:hover {
-    color: #005bb5;
-    text-decoration: underline;
+    border-radius: 10px;
 }
 
 /* -------------------------------
@@ -150,45 +245,93 @@ footer {
     padding: 1.5rem;
     background-color: #111;
     color: #ccc;
-    font-size: 0.9rem;
-}
-
-footer a {
-    color: #00baff;
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
 }
 
 /* -------------------------------
-   RESPONSIVE DESIGN
+   RESPONSIVE: MOBILE NAV
 --------------------------------*/
 @media (max-width: 768px) {
-    header {
-        height: 70vh;
-        background-position: center;
+
+    /* Navbar becomes 3-column grid: logo - burger - logo */
+    .navbar {
+        height: 70px;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 0.5rem;
+        gap: 0.5rem;
     }
 
-    header h1 {
-        font-size: 2rem;
+    .nav-left {
+        grid-column: 1;
+        justify-self: start;
     }
 
-    header p {
+    .nav-right {
+        grid-column: 3;
+        justify-self: end;
+    }
+
+    .nav-toggle {
+        grid-column: 2;
+        justify-self: center;
+        display: flex;          /* visible on mobile */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-logo {
+        height: 100%;
+        max-height: 60px;       /* scale down on mobile */
+    }
+
+    /* reset Zirkel boost on mobile so it doesn't overshoot */
+    .zirkel-fix {
+        height: 100%;
+        max-height: 60px;
+        object-fit: contain;
+    }
+
+    .hero {
+        margin-top: 70px;
+        height: auto;
+        padding: 3rem 1.5rem;
+    }
+
+    /* Navigation links become dropdown under navbar */
+    .nav-links {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0 1.5rem;
+        gap: 1rem;
+        display: none;
+    }
+
+    .nav-links.open {
+        display: flex;
+    }
+
+    .nav-links a {
         font-size: 1rem;
-    }
-
-    header ul li {
-        display: block;
-        margin: 0.5rem 0;
     }
 
     .lightwidget-widget {
         height: 450px;
     }
+}
 
-    .gallery h2 {
-        font-size: 1.5rem;
+@media (max-width: 480px) {
+    .nav-links a {
+        font-size: 0.95rem;
+    }
+
+    .lightwidget-widget {
+        height: 320px;
     }
 }

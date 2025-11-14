@@ -8,58 +8,138 @@
 </head>
 <body>
 
-<section class="hero">
-    <div class="hero-overlay">
-        <div class="hero-content">
-            <h1>Die KDStV Nordmark zu Essen</h1>
-            <p>
-                ...ist eine nichtschlagende, farbentragende, katholische Studentenverbindung.
-                Wir sind Mitglied im „Cartellverband der katholischen deutschen Studentenverbindungen“ (CV).
-            </p>
-            <p>Verbindungsstudent zu sein bedeutet für uns:</p>
-            <ul>
-                <li>Erfolgreich studieren,</li>
-                <li>sinnvoll Freizeit gestalten,</li>
-                <li>gemeinsam den Glauben leben,</li>
-                <li>Freunde fürs Leben finden.</li>
-            </ul>
-            <p>
-                Unsere Homepage soll Dir einen kleinen Einblick in unser Verbindungsleben
-                sowie unsere Veranstaltungen während des Semesters ermöglichen.
-                Am besten jedoch, Du lernst uns persönlich kennen – Herzlich Willkommen!
-            </p>
-            <p>
-                Wenn Du Fragen oder Interesse an unserer Verbindung hast, nimm Kontakt mit uns auf –
-                wir stehen Dir gerne zur Verfügung!
-            </p>
-        </div>
+<!-- NAVIGATION BAR -->
+<nav class="navbar">
+    <!-- LEFT LOGO -->
+    <div class="nav-left">
+        <img src="images/WAPPEN_MÄRZ_2024.svg"
+             alt="Wappen KDStV Nordmark"
+             class="nav-logo nav-logo-left">
+    </div>
+
+    <!-- HAMBURGER BUTTON (visible on mobile, hidden on desktop) -->
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- NAVIGATION LINKS -->
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#start">Startseite</a></li>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#events">Veranstaltungen</a></li>
+        <li><a href="#ruhrcv">Ruhr-CV</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+    </ul>
+
+    <!-- RIGHT LOGO -->
+    <div class="nav-right">
+        <img src="images/NDM_ZIRKEL.svg"
+             alt="Zirkel KDStV Nordmark"
+             class="nav-logo nav-logo-right zirkel-fix">
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="start">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Die KDStV Nordmark zu Essen</h1>
+
+        <p>
+            ...ist eine nichtschlagende, farbentragende, katholische Studentenverbindung.
+            Wir sind Mitglied im „Cartellverband der katholischen deutschen Studentenverbindungen“ (CV).
+        </p>
+
+        <p>Verbindungsstudent zu sein bedeutet für uns:</p>
+
+        <ul>
+            <li>Erfolgreich studieren,</li>
+            <li>sinnvoll Freizeit gestalten,</li>
+            <li>gemeinsam den Glauben leben,</li>
+            <li>Freunde fürs Leben finden.</li>
+        </ul>
+
+        <p>
+            Unsere Homepage soll Dir einen kleinen Einblick in unser Verbindungsleben
+            sowie unsere Veranstaltungen während des Semesters ermöglichen.
+        </p>
+
+        <p>
+            Am besten jedoch, Du lernst uns persönlich kennen – Herzlich Willkommen!
+        </p>
     </div>
 </section>
 
-<main>
-    <section class="gallery">
-        <h2>Instagram Feed</h2>
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+    <div class="about-inner">
+        <h2>Über uns</h2>
+        <p>
+            Die KDStV Nordmark zu Essen ist eine akademische Gemeinschaft,
+            die Studium, Freundschaft, Glaube und Tradition miteinander verbindet.
+        </p>
+    </div>
+</section>
 
-        <!-- LightWidget Embed -->
+<!-- EVENTS SECTION -->
+<main>
+    <section class="gallery" id="events">
+        <h2>Veranstaltungen</h2>
+
         <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-        <iframe src="//lightwidget.com/widgets/209bdab4d6455bd3832f9dafbbbdd0a1.html"
+        <iframe
+                src="//lightwidget.com/widgets/209bdab4d6455bd3832f9dafbbbdd0a1.html"
                 scrolling="no"
                 allowtransparency="true"
                 class="lightwidget-widget">
         </iframe>
 
-        <!-- Direct Instagram link as fallback -->
         <p class="insta-link">
             <a href="https://www.instagram.com/kdstvnordmark" target="_blank" rel="noopener noreferrer">
-                Visit us on Instagram
+                Besuch uns auf Instagram
             </a>
         </p>
     </section>
 </main>
 
-<footer>
+<!-- RUHR-CV SECTION -->
+<section class="about" id="ruhrcv">
+    <div class="about-inner">
+        <h2>Ruhr-CV</h2>
+        <p>Informationen über den Ruhr-CV können hier eingefügt werden.</p>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
     <p>&copy; 2025 KDSTV Nordmark</p>
 </footer>
+
+<!-- SIMPLE NAV TOGGLE SCRIPT -->
+<script>
+    (function () {
+        const toggle = document.querySelector('.nav-toggle');
+        const links = document.getElementById('nav-links');
+
+        if (!toggle || !links) return;
+
+        toggle.addEventListener('click', function () {
+            const isOpen = links.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close menu when clicking a link (on mobile)
+        links.addEventListener('click', function (e) {
+            if (e.target.tagName.toLowerCase() === 'a') {
+                links.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    })();
+</script>
 
 </body>
 </html>
