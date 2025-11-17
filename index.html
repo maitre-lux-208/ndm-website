@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDSTV Nordmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVIGATION BAR -->
+<nav class="navbar">
+    <!-- LEFT LOGO -->
+    <div class="nav-left">
+        <img src="images/Wappen.svg"
+             alt="Wappen KDStV Nordmark"
+             class="nav-logo nav-logo-left">
+    </div>
+
+    <!-- HAMBURGER BUTTON -->
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- NAVIGATION LINKS -->
+    <ul class="nav-links" id="nav-links">
+        <li><a href="#start" data-section="start">Startseite</a></li>
+        <li><a href="#about" data-section="about">Semesterprogramm</a></li>
+        <li><a href="#events" data-section="events">Social Media</a></li>
+        <li><a href="#ruhrcv" data-section="ruhrcv">Ruhr-CV</a></li>
+        <li><a href="#contact" data-section="contact">Kontakt</a></li>
+    </ul>
+
+    <!-- RIGHT LOGO -->
+    <div class="nav-right">
+        <img src="images/Zirkel.svg"
+             alt="Zirkel KDStV Nordmark"
+             class="nav-logo nav-logo-right">
+    </div>
+</nav>
+
+<!-- BREADCRUMB (mobile only, hidden via CSS on desktop) -->
+<div class="breadcrumb" id="breadcrumb">
+    Startseite
+</div>
+
+<!-- STARTSEITE -->
+<section id="start" class="section parallax section-start section--hidden">
+    <div class="section-overlay">
+        <div class="section-content hero-content">
+            <h1>Die KDStV Nordmark zu Essen</h1>
+            <p>
+                ...ist eine nichtschlagende, farbentragende, katholische Studentenverbindung.
+                Wir sind Mitglied im „Cartellverband der katholischen deutschen Studentenverbindungen“ (CV).
+            </p>
+            <p>Verbindungsstudent zu sein bedeutet für uns:</p>
+            <ul>
+                <li>Erfolgreich studieren</li>
+                <li>Freunde fürs Leben finden</li>
+                <li>sinnvoll Freizeit gestalten</li>
+                <li>gemeinsam den Glauben leben</li>
+            </ul>
+            <p>
+                Die KDStV Nordmark zu Essen ist eine akademische Gemeinschaft,
+                die Studium, Freundschaft, Glaube und Tradition miteinander verbindet.
+
+                Wir sind Mitglied im „Cartellverband der katholischen deutschen Studentenverbindungen“ (CV) und
+                eine eingetragene akademische Vereinigung an der Universität Duisburg-Essen.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SEMESTERPROGRAMM -->
+<section id="about" class="section parallax section-about section--hidden">
+    <div class="section-overlay">
+        <div class="section-content narrow glass-card">
+            <h2>Semesterprogramm</h2>
+
+            <p>
+                <em>
+                    Februar 1929 in Rostock gegründet und besteht seit 1976 in Essen. Die KDStV Nordmark gehört dem
+                    Cartellverband der katholischen deutschen Studentenverbindungen (CV) an, der mit 128 Verbindungen...
+                </em>
+            </p>
+
+            <p>
+                Für mehr Informationen über uns und unsere Veranstaltungen, schaut gerne in unser Semesterprogramm:
+            </p>
+
+            <p class="semester-link">
+                <a href="Semesterprogramm.pdf" class="btn-primary" download>
+                    Semesterprogramm herunterladen (PDF)
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- SOCIAL MEDIA -->
+<section id="events" class="section parallax section-events section--hidden">
+    <div class="section-overlay">
+        <div class="section-content">
+            <h2>Social Media</h2>
+
+            <div class="gallery glass-card">
+                <!-- LightWidget WIDGET -->
+                <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+                <iframe
+                        src="//lightwidget.com/widgets/4c66353b1ba555e5afa9daa16b7df334.html"
+                        scrolling="no"
+                        allowtransparency="true"
+                        class="lightwidget-widget"
+                        style="width:100%;border:0;overflow:hidden;">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RUHR-CV -->
+<section id="ruhrcv" class="section parallax section-ruhrcv section--hidden">
+    <div class="section-overlay">
+        <div class="section-content narrow glass-card">
+            <h2>Ruhr-CV</h2>
+            <p>
+                Informationen über den Ruhr-CV können hier eingefügt werden.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="contact" class="section parallax section-contact section--hidden">
+    <div class="section-overlay">
+        <div class="section-content narrow glass-card">
+            <h2>Kontakt</h2>
+            <p>
+                Du hast Fragen oder Interesse an unserer Verbindung?
+                Schreib uns gerne eine Nachricht oder besuch uns auf einer unserer Veranstaltungen.
+            </p>
+            <p>
+                E-Mail: <a href="mailto:info@nordmark-essen.de">info@nordmark-essen.de</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2025 KDStV Nordmark</p>
+</footer>
+
+<!-- NAV TOGGLE + MOBILE HIDE-ON-SCROLL + SECTION FADE + BREADCRUMB -->
+<script>
+    (function () {
+        const toggle = document.querySelector('.nav-toggle');
+        const links = document.getElementById('nav-links');
+        const navbar = document.querySelector('.navbar');
+        const breadcrumb = document.getElementById('breadcrumb');
+        const sections = document.querySelectorAll('.section');
+        const navAnchors = document.querySelectorAll('.nav-links a');
+        let lastScrollY = window.scrollY;
+
+        const sectionLabels = {
+            start: 'Startseite',
+            about: 'Semesterprogramm',
+            events: 'Social Media',
+            ruhrcv: 'Ruhr-CV',
+            contact: 'Kontakt'
+        };
+
+        /* ---------- MOBILE NAV TOGGLE ---------- */
+        if (toggle && links) {
+            toggle.addEventListener('click', () => {
+                const isOpen = links.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+                // When menu is opened/closed, always show navbar
+                if (navbar) navbar.classList.remove('navbar--hidden');
+
+                // breadcrumb stays visible; position is controlled by scroll logic below
+            });
+
+            links.addEventListener('click', (e) => {
+                if (e.target.tagName.toLowerCase() === 'a') {
+                    links.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+
+        /* ---------- HIDE NAVBAR ON SCROLL (MOBILE ONLY) + BREADCRUMB POSITION ---------- */
+        function handleScroll() {
+            if (!navbar) return;
+
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) {
+                navbar.classList.remove('navbar--hidden');
+                if (breadcrumb) {
+                    // desktop: breadcrumb hidden via CSS
+                    breadcrumb.classList.remove('breadcrumb--at-top');
+                }
+                lastScrollY = window.scrollY;
+                return;
+            }
+
+            const currentY = window.scrollY;
+            const menuOpen = links && links.classList.contains('open');
+
+            if (!breadcrumb) return;
+
+            // Always show navbar at very top or while menu open
+            if (menuOpen || currentY < 10) {
+                navbar.classList.remove('navbar--hidden');
+                breadcrumb.classList.remove('breadcrumb--at-top'); // under navbar (top: 70px)
+            } else if (currentY > lastScrollY) {
+                // scrolling down -> hide navbar, breadcrumb slides up to top
+                navbar.classList.add('navbar--hidden');
+                breadcrumb.classList.add('breadcrumb--at-top'); // top: 0
+            } else if (currentY < lastScrollY) {
+                // scrolling up -> show navbar again, breadcrumb goes back under navbar
+                navbar.classList.remove('navbar--hidden');
+                breadcrumb.classList.remove('breadcrumb--at-top');
+            }
+
+            lastScrollY = currentY;
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+
+        /* ---------- SECTION FADE-IN + BREADCRUMB + ACTIVE LINK ---------- */
+        const observerOptions = {
+            threshold: 0.4
+        };
+
+        function updateActiveNavAndBreadcrumb(id) {
+            const label = sectionLabels[id] || '';
+            if (breadcrumb && label) {
+                breadcrumb.textContent = label;
+            }
+
+            navAnchors.forEach(a => {
+                const sec = a.getAttribute('data-section');
+                if (sec === id) {
+                    a.classList.add('nav-link-active');
+                } else {
+                    a.classList.remove('nav-link-active');
+                }
+            });
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const section = entry.target;
+                if (entry.isIntersecting) {
+                    section.classList.remove('section--hidden');
+                    section.classList.add('section--visible');
+
+                    const id = section.getAttribute('id');
+                    if (id) {
+                        updateActiveNavAndBreadcrumb(id);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initial run
+        handleScroll();
+    })();
+</script>
+
+</body>
+</html>
