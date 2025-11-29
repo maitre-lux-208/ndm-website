@@ -10,21 +10,14 @@
 
 <!-- NAVIGATION BAR -->
 <nav class="navbar">
-    <!-- LEFT LOGO -->
     <div class="nav-left">
-        <img src="images/Wappen.svg"
-             alt="Wappen KDStV Nordmark"
-             class="nav-logo nav-logo-left">
+        <img src="images/Wappen.svg" class="nav-logo nav-logo-left" alt="Wappen KDStV Nordmark">
     </div>
 
-    <!-- HAMBURGER BUTTON -->
-    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav-links">
-        <span></span>
-        <span></span>
-        <span></span>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
     </button>
 
-    <!-- NAVIGATION LINKS -->
     <ul class="nav-links" id="nav-links">
         <li><a href="#start" data-section="start">Startseite</a></li>
         <li><a href="#about" data-section="about">Semesterprogramm</a></li>
@@ -33,21 +26,16 @@
         <li><a href="#contact" data-section="contact">Kontakt</a></li>
     </ul>
 
-    <!-- RIGHT LOGO -->
     <div class="nav-right">
-        <img src="images/Zirkel.svg"
-             alt="Zirkel KDStV Nordmark"
-             class="nav-logo nav-logo-right">
+        <img src="images/Zirkel.svg" class="nav-logo nav-logo-right" alt="Zirkel KDStV Nordmark">
     </div>
 </nav>
 
-<!-- BREADCRUMB (mobile only, hidden via CSS on desktop) -->
-<div class="breadcrumb" id="breadcrumb">
-    Startseite
-</div>
+<!-- BREADCRUMB (nur mobil sichtbar) -->
+<div class="breadcrumb" id="breadcrumb">Startseite</div>
 
 <!-- STARTSEITE -->
-<section id="start" class="section parallax section-start section--hidden">
+<section id="start" class="section parallax section-start">
     <div class="section-overlay">
         <div class="section-content hero-content">
             <h1>Die KDStV Nordmark zu Essen</h1>
@@ -74,7 +62,7 @@
 </section>
 
 <!-- SEMESTERPROGRAMM -->
-<section id="about" class="section parallax section-about section--hidden">
+<section id="about" class="section parallax section-about">
     <div class="section-overlay">
         <div class="section-content narrow glass-card">
             <h2>Semesterprogramm</h2>
@@ -92,27 +80,37 @@
 
             <p class="semester-link">
                 <a href="Semesterprogramm.pdf" class="btn-primary" download>
-                    Semesterprogramm herunterladen (PDF)
+                    Semesterprogramm herunterladen
                 </a>
             </p>
+
+            <div class="pdf-viewer">
+                <object data="Semesterprogramm.pdf#toolbar=1&view=FitH"
+                        type="application/pdf"
+                        class="pdf-object">
+                    <iframe src="Semesterprogramm.pdf#toolbar=1&view=FitH"
+                            class="pdf-iframe">
+                        Ihr Browser unterstützt die PDF-Anzeige nicht.
+                        Sie können das PDF hier herunterladen:
+                        <a href="Semesterprogramm.pdf">PDF herunterladen</a>
+                    </iframe>
+                </object>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- SOCIAL MEDIA -->
-<section id="events" class="section parallax section-events section--hidden">
+<section id="events" class="section parallax section-events">
     <div class="section-overlay">
         <div class="section-content">
             <h2>Social Media</h2>
-
             <div class="gallery glass-card">
-                <!-- LightWidget WIDGET -->
                 <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-                <iframe
-                        src="//lightwidget.com/widgets/4c66353b1ba555e5afa9daa16b7df334.html"
+                <iframe src="//lightwidget.com/widgets/4c66353b1ba555e5afa9daa16b7df334.html"
+                        class="lightwidget-widget"
                         scrolling="no"
                         allowtransparency="true"
-                        class="lightwidget-widget"
                         style="width:100%;border:0;overflow:hidden;">
                 </iframe>
             </div>
@@ -121,19 +119,17 @@
 </section>
 
 <!-- RUHR-CV -->
-<section id="ruhrcv" class="section parallax section-ruhrcv section--hidden">
+<section id="ruhrcv" class="section parallax section-ruhrcv">
     <div class="section-overlay">
         <div class="section-content narrow glass-card">
             <h2>Ruhr-CV</h2>
-            <p>
-                Informationen über den Ruhr-CV können hier eingefügt werden.
-            </p>
+            <p>Informationen über den Ruhr-CV können hier eingefügt werden.</p>
         </div>
     </div>
 </section>
 
 <!-- KONTAKT -->
-<section id="contact" class="section parallax section-contact section--hidden">
+<section id="contact" class="section parallax section-contact">
     <div class="section-overlay">
         <div class="section-content narrow glass-card">
             <h2>Kontakt</h2>
@@ -148,29 +144,28 @@
     </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <p>&copy; 2025 KDStV Nordmark</p>
 </footer>
 
-<!-- NAV TOGGLE + MOBILE HIDE-ON-SCROLL + SECTION FADE + BREADCRUMB -->
 <script>
     (function () {
-        const toggle = document.querySelector('.nav-toggle');
-        const links = document.getElementById('nav-links');
-        const navbar = document.querySelector('.navbar');
+        const toggle     = document.querySelector('.nav-toggle');
+        const links      = document.getElementById('nav-links');
+        const navbar     = document.querySelector('.navbar');
         const breadcrumb = document.getElementById('breadcrumb');
-        const sections = document.querySelectorAll('.section');
         const navAnchors = document.querySelectorAll('.nav-links a');
-        let lastScrollY = window.scrollY;
+        const sections   = document.querySelectorAll('section');
 
         const sectionLabels = {
-            start: 'Startseite',
-            about: 'Semesterprogramm',
-            events: 'Social Media',
-            ruhrcv: 'Ruhr-CV',
+            start:   'Startseite',
+            about:   'Semesterprogramm',
+            events:  'Social Media',
+            ruhrcv:  'Ruhr-CV',
             contact: 'Kontakt'
         };
+
+        let lastScrollY = window.scrollY;
 
         /* ---------- MOBILE NAV TOGGLE ---------- */
         if (toggle && links) {
@@ -178,12 +173,13 @@
                 const isOpen = links.classList.toggle('open');
                 toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 
-                // When menu is opened/closed, always show navbar
-                if (navbar) navbar.classList.remove('navbar--hidden');
-
-                // breadcrumb stays visible; position is controlled by scroll logic below
+                // Wenn das Menü geöffnet wird, Navbar immer anzeigen
+                if (navbar) {
+                    navbar.classList.remove('navbar--hidden');
+                }
             });
 
+            // Menü schließen, wenn Link geklickt wird (Mobile)
             links.addEventListener('click', (e) => {
                 if (e.target.tagName.toLowerCase() === 'a') {
                     links.classList.remove('open');
@@ -192,36 +188,40 @@
             });
         }
 
-        /* ---------- HIDE NAVBAR ON SCROLL (MOBILE ONLY) + BREADCRUMB POSITION ---------- */
+        /* ---------- NAVBAR + BREADCRUMB BEI SCROLL (MOBILE) ---------- */
         function handleScroll() {
             if (!navbar) return;
 
             const isMobile = window.innerWidth <= 768;
+            const currentY = window.scrollY;
+
             if (!isMobile) {
+                // Desktop: Navbar immer sichtbar, Breadcrumb wird per CSS ausgeblendet
                 navbar.classList.remove('navbar--hidden');
                 if (breadcrumb) {
-                    // desktop: breadcrumb hidden via CSS
                     breadcrumb.classList.remove('breadcrumb--at-top');
                 }
-                lastScrollY = window.scrollY;
+                lastScrollY = currentY;
                 return;
             }
 
-            const currentY = window.scrollY;
+            if (!breadcrumb) {
+                lastScrollY = currentY;
+                return;
+            }
+
             const menuOpen = links && links.classList.contains('open');
 
-            if (!breadcrumb) return;
-
-            // Always show navbar at very top or while menu open
+            // Immer sichtbar ganz oben: am Anfang oder wenn Menü offen
             if (menuOpen || currentY < 10) {
                 navbar.classList.remove('navbar--hidden');
-                breadcrumb.classList.remove('breadcrumb--at-top'); // under navbar (top: 70px)
+                breadcrumb.classList.remove('breadcrumb--at-top');
             } else if (currentY > lastScrollY) {
-                // scrolling down -> hide navbar, breadcrumb slides up to top
+                // Runterscrollen → Navbar weg, Breadcrumb ganz oben
                 navbar.classList.add('navbar--hidden');
-                breadcrumb.classList.add('breadcrumb--at-top'); // top: 0
+                breadcrumb.classList.add('breadcrumb--at-top');
             } else if (currentY < lastScrollY) {
-                // scrolling up -> show navbar again, breadcrumb goes back under navbar
+                // Hochscrollen → Navbar wieder da, Breadcrumb unter Navbar
                 navbar.classList.remove('navbar--hidden');
                 breadcrumb.classList.remove('breadcrumb--at-top');
             }
@@ -232,47 +232,31 @@
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('resize', handleScroll);
 
-        /* ---------- SECTION FADE-IN + BREADCRUMB + ACTIVE LINK ---------- */
-        const observerOptions = {
-            threshold: 0.4
-        };
-
-        function updateActiveNavAndBreadcrumb(id) {
-            const label = sectionLabels[id] || '';
-            if (breadcrumb && label) {
-                breadcrumb.textContent = label;
+        /* ---------- AKTIVE SECTION → BREADCRUMB + NAV-LINK ---------- */
+        function updateBreadcrumbAndNav(id) {
+            if (breadcrumb && sectionLabels[id]) {
+                breadcrumb.textContent = sectionLabels[id];
             }
 
             navAnchors.forEach(a => {
                 const sec = a.getAttribute('data-section');
-                if (sec === id) {
-                    a.classList.add('nav-link-active');
-                } else {
-                    a.classList.remove('nav-link-active');
-                }
+                a.classList.toggle('nav-link-active', sec === id);
             });
         }
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                const section = entry.target;
-                if (entry.isIntersecting) {
-                    section.classList.remove('section--hidden');
-                    section.classList.add('section--visible');
-
-                    const id = section.getAttribute('id');
-                    if (id) {
-                        updateActiveNavAndBreadcrumb(id);
-                    }
+                if (!entry.isIntersecting) return;
+                const id = entry.target.getAttribute('id');
+                if (id) {
+                    updateBreadcrumbAndNav(id);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.4 });
 
-        sections.forEach(section => {
-            observer.observe(section);
-        });
+        sections.forEach(sec => observer.observe(sec));
 
-        // Initial run
+        // Initial
         handleScroll();
     })();
 </script>
