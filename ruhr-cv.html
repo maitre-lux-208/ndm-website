@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruhr-CV - KDStV Nordmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
+            <span class="site-title">KDStV Nordmark</span>
+        </div>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="semesterprogramm.html">Semesterprogramm</a></li>
+                <li><a href="social-media.html">Social Media</a></li>
+                <li><a href="ruhr-cv.html" class="nav-link-active">Ruhr-CV</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Navigation umschalten">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main>
+    <div class="page-header">
+        <h1>Ruhr-CV</h1>
+        <p>Unser regionaler Zusammenschluss</p>
+    </div>
+
+    <article class="content-section">
+        <p>
+            Der Ruhr-CV ist ein regionaler Zusammenschluss von katholischen Studentenverbindungen 
+            im Cartellverband. Gemeinsam organisieren wir Veranstaltungen und fördern den Austausch 
+            zwischen den einzelnen Verbindungen.
+        </p>
+
+        <h2>Über den CV</h2>
+        <p>
+            Der Cartellverband der katholischen deutschen Studentenverbindungen (CV) ist einer der 
+            größten Dachverbände akademischer Studentenverbindungen in Deutschland. Mit 128 Mitgliedverbindungen 
+            setzen wir uns für Werte wie Toleranz, Respekt und akademische Exzellenz ein.
+        </p>
+
+        <h2>Was ist der Ruhr-CV?</h2>
+        <p>
+            Der Ruhr-CV ist unser lokaler Verband und bietet eine Plattform für den Austausch zwischen 
+            den Verbindungen in der Region. Gemeinsam organisieren wir regionale Veranstaltungen, 
+            Vorträge und Konferenzen.
+        </p>
+
+        <p>
+            <strong>Mehr Informationen folgen in Kürze. Schreib uns einfach eine Mail wenn du 
+            Fragen hast!</strong>
+        </p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+    });
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+    });
+</script>
+
+</body>
+</html>

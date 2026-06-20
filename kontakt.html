@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - KDStV Nordmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
+            <span class="site-title">KDStV Nordmark</span>
+        </div>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="ueber-nordmark.html">Über Nordmark</a></li>
+                <li><a href="semesterprogramm.html">Semesterprogramm</a></li>
+                <li><a href="social-media.html">Social Media</a></li>
+                <li><a href="kontakt.html" class="nav-link-active">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Navigation umschalten">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar visible" id="breadcrumb">Kontakt</div>
+
+<!-- MAIN CONTENT -->
+<main>
+    <div class="page-header">
+        <h1>Kontakt</h1>
+        <p>Wir freuen uns auf deine Nachricht</p>
+    </div>
+
+    <article class="content-section">
+        <div class="contact-info">
+            <h3>Schreib uns eine E-Mail</h3>
+            <p>
+                <strong>E-Mail:</strong><br>
+                <a href="mailto:info@nordmark-essen.de">info@nordmark-essen.de</a>
+            </p>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="mailto:info@nordmark-essen.de" class="button">
+                📧 E-Mail App öffnen
+            </a>
+        </div>
+
+        <h2>Besuch uns bei einer Veranstaltung</h2>
+        <p>
+            Das beste Kennenlernen funktioniert persönlich! Schau bei einem unserer Stammtische vorbei 
+            oder besuche uns bei einer unserer größeren Veranstaltungen. Alle Termine findest du 
+            im <a href="semesterprogramm.html">Semesterprogramm</a>.
+        </p>
+
+        <p>
+            Wir sind immer offen für neue Gesichter und freuen uns, dich bald kennenzulernen! Schreib uns eine Nachricht
+            oder komm vorbei.
+        </p>
+
+
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+    });
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+    });
+</script>
+
+</body>
+</html>

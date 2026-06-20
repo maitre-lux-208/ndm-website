@@ -55,14 +55,14 @@ header {
 /* Breadcrumb unter Header */
 .breadcrumb-bar {
     position: sticky;
-    top: 70px;
+    top: 0;
     background-color: rgba(26, 26, 26, 0.95);
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     z-index: 999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: #f0f0f0;
-    font-size: 0.95rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 400;
     display: none;
 }
 
@@ -73,7 +73,7 @@ header {
 .header-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -88,13 +88,13 @@ header {
 }
 
 .logo-section img {
-    height: 50px;
+    height: 120px;
     width: auto;
 }
 
 .site-title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 400;
     color: #ffffff;
     font-family: "Monotype Corsiva", "Segoe Script", "Lucida Handwriting", cursive;
 }
@@ -139,15 +139,76 @@ header {
     cursor: pointer;
     padding: 0.5rem;
     flex-shrink: 0;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    z-index: 1001;
+}
+
+@keyframes waveStripes {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-1.5px);
+    }
 }
 
 .hamburger span {
     display: block;
-    width: 24px;
-    height: 2px;
+    width: 35px;
+    height: 4px;
+    background-color: #000000;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    border-radius: 0;
+    position: absolute;
+    left: 5px;
+}
+
+.hamburger span:nth-child(1) {
+    top: 2px;
+    background-color: #000000;
+}
+
+.hamburger span:nth-child(2) {
+    top: 10px;
+    background-color: #c41e3a;
+}
+
+.hamburger span:nth-child(3) {
+    top: 18px;
+    background-color: #000000;
+}
+
+.hamburger span:nth-child(4) {
+    top: 26px;
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(1) {
     background-color: #ffffff;
-    margin: 5px 0;
-    transition: 0.3s;
+    animation: waveStripes 1.2s ease-in-out infinite;
+    animation-delay: 0s;
+}
+
+.hamburger.open span:nth-child(2) {
+    background-color: #000000;
+    animation: waveStripes 1.2s ease-in-out infinite;
+    animation-delay: 0.1s;
+}
+
+.hamburger.open span:nth-child(3) {
+    background-color: #c41e3a;
+    animation: waveStripes 1.2s ease-in-out infinite;
+    animation-delay: 0.2s;
+}
+
+.hamburger.open span:nth-child(4) {
+    background-color: #ffffff;
+    opacity: 1;
+    animation: waveStripes 1.2s ease-in-out infinite;
+    animation-delay: 0.3s;
 }
 
 /* ================================
@@ -159,6 +220,11 @@ main {
     margin: 0 auto;
     padding: 0 1.5rem;
     flex: 1;
+}
+
+main.main-full-width {
+    max-width: 100%;
+    padding: 0;
 }
 
 main:has(.hero-with-bg) {
@@ -268,38 +334,52 @@ main:has(.hero-with-bg) {
     gap: 1.5rem;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
 }
 
 .button-transparent {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    background-color: rgba(0, 0, 0, 0.35) !important;
+    border: 2px solid white;
     color: white !important;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1rem 2.2rem;
 }
 
 .button-transparent:hover {
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    border-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #1a1a1a !important;
+    border-color: white;
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
 }
 
 .button-dark-red {
-    border-color: rgba(255, 255, 255, 0.7) !important;
+    border-color: white !important;
+    background-color: transparent !important;
 }
 
 .button-dark-red:hover {
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    border-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #c41e3a !important;
 }
 
 .button-black {
-    border-color: rgba(255, 255, 255, 0.7) !important;
+    border-color: white !important;
+    background-color: transparent !important;
 }
 
 .button-black:hover {
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    border-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    color: #333 !important;
 }
+
 
 /* ================================
    CARDS & BOXES
@@ -357,28 +437,152 @@ main:has(.hero-with-bg) {
 }
 
 /* ================================
+   CALENDAR
+   ================================ */
+
+.calendar-container {
+    margin: 2rem 0;
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e0e0e0;
+}
+
+.fc {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.fc .fc-button-primary {
+    background-color: #c41e3a;
+    border-color: #c41e3a;
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: #a01830;
+    border-color: #a01830;
+}
+
+.fc .fc-button-primary.fc-button-active {
+    background-color: #a01830;
+    border-color: #a01830;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+    background-color: rgba(196, 30, 58, 0.1);
+}
+
+.fc .fc-col-header-cell {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+}
+
+.fc .fc-daygrid-day-number {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+}
+
+.fc .fc-daygrid-day-frame {
+    min-height: auto;
+}
+
+.fc-event-title {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.2rem;
+    white-space: normal;
+}
+
+.fc .fc-daygrid-block-event .fc-event-title {
+    font-size: 0.75rem;
+}
+
+/* Event Modal */
+.event-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.2s ease;
+}
+
+.event-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.event-modal-close {
+    float: right;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #999;
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+}
+
+.event-modal-close:hover {
+    color: #333;
+}
+
+.event-modal h2 {
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.event-modal-date {
+    color: #c41e3a;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.event-modal-description {
+    color: #333;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ================================
    GALLERY / SOCIAL MEDIA
    ================================ */
 
 .gallery {
     border-radius: 18px;
-    padding: 2rem 1.5rem;
-    max-width: 900px;
-    margin: 2rem auto;
-    width: calc(100% + 3rem);
-    margin-left: calc(-1.5rem);
-    margin-right: calc(-1.5rem);
+    padding: 0;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.lightwidget-widget {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    border: none;
-    border-radius: 12px;
-    overflow: hidden;
-    display: block;
-    margin: 0 auto;
+.instagram-media {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
 }
 
 /* ================================
@@ -451,6 +655,8 @@ footer p {
     .hamburger {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     main {
@@ -593,11 +799,13 @@ footer p {
     .hero-buttons {
         gap: 0.8rem;
         flex-direction: row;
+        flex-wrap: nowrap;
+        padding: 0.8rem 1rem;
     }
 
     .button {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.75rem;
     }
 
     h1 { font-size: 1.8rem; }

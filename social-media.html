@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media - KDStV Nordmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
+            <span class="site-title">KDStV Nordmark</span>
+        </div>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="ueber-nordmark.html">Über Nordmark</a></li>
+                <li><a href="semesterprogramm.html">Semesterprogramm</a></li>
+                <li><a href="social-media.html" class="nav-link-active">Social Media</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Navigation umschalten">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar visible" id="breadcrumb">Social Media</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-full-width">
+    <article class="content-section">
+        <div class="gallery">
+            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/kdstvnordmark/" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 0 auto; max-width:none !important; width:100% !important;"></blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
+        </div>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+    });
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+    });
+</script>
+
+</body>
+</html>

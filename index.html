@@ -30,6 +30,7 @@
             <span></span>
             <span></span>
             <span></span>
+            <span></span>
         </button>
     </div>
 </header>
@@ -42,8 +43,8 @@
     <!-- HERO SECTION -->
     <div class="hero hero-with-bg">
         <div class="hero-buttons">
-            <a href="ueber-nordmark.html" class="button button-transparent button-dark-red">Über Nordmark</a>
-            <a href="semesterprogramm.html" class="button button-transparent button-black">Semesterprogramm</a>
+            <a href="ueber-nordmark.html" class="button button-transparent button-black">Über Nordmark</a>
+            <a href="semesterprogramm.html" class="button button-transparent button-dark-red">Semesterprogramm</a>
         </div>
     </div>
 </main>
@@ -58,12 +59,14 @@
 
     hamburger.addEventListener('click', () => {
         navMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
     });
 
     // Menü schließen wenn Link geklickt wird
     navMenu.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') {
             navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
         }
     });
 </script>

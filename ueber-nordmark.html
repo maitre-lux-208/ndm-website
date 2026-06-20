@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über Nordmark - KDStV Nordmark</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
+            <span class="site-title">KDStV Nordmark</span>
+        </div>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="ueber-nordmark.html" class="nav-link-active">Über Nordmark</a></li>
+                <li><a href="semesterprogramm.html">Semesterprogramm</a></li>
+                <li><a href="social-media.html">Social Media</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Navigation umschalten">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar visible" id="breadcrumb">Über Nordmark</div>
+
+<!-- MAIN CONTENT -->
+<main>
+    <div class="page-header">
+        <h1>Über Nordmark</h1>
+        <p>Wer wir sind und wofür wir stehen</p>
+    </div>
+
+    <article class="content-section">
+        <p>
+            Wir sind eine akademische Gemeinschaft, die Studium, Freundschaft, Glaube und Tradition miteinander verbindet. 
+            Die KDStV Nordmark wurde 1929 in Rostock gegründet und besteht seit 1976 in Essen als eingetragene akademische 
+            Vereinigung an der Universität Duisburg-Essen.
+        </p>
+
+        <h2>Was bedeutet Verbindungsstudent für uns?</h2>
+        <ul>
+            <li>Erfolgreich studieren</li>
+            <li>Freunde fürs Leben finden</li>
+            <li>Sinnvoll Freizeit gestalten</li>
+            <li>Gemeinsam den Glauben leben</li>
+        </ul>
+
+        <h2>Der Cartellverband und der Ruhr-CV</h2>
+        <p>
+            Wir sind eine nichtschlagende, farbentragende, katholische Studentenverbindung und Mitglied im 
+            <a href="https://www.cartellverband.de/" target="_blank">Cartellverband der katholischen deutschen Studentenverbindungen</a>. 
+            Der CV ist einer der größten Dachverbände akademischer Studentenverbindungen in Deutschland mit 128 Mitgliedverbindungen 
+            und setzt sich für Werte wie Toleranz, Respekt und akademische Exzellenz ein.
+        </p>
+        
+        <p>
+            Der Ruhr-CV ist unser lokaler Verband und bietet eine Plattform für den Austausch zwischen 
+            den Verbindungen in der Region. Gemeinsam organisieren wir regionale Veranstaltungen, Vorträge und Konferenzen.
+        </p>
+
+        <h2>Unser Veranstaltungsprogramm</h2>
+        <p>
+            Ein wichtiger Teil unserer Gemeinschaft sind unsere regelmäßigen Veranstaltungen. Von akademischen 
+            Vorträgen über gesellige Stammtische bis hin zu großen Feiern bieten wir ein abwechslungsreiches Programm.
+            Alle Termine und Veranstaltungen findest du im <a href="semesterprogramm.html">Semesterprogramm</a>.
+        </p>
+
+        <h2>Interesse an uns?</h2>
+        <p>
+            Du interessierst dich für unser Verbindungsleben? Schau bei einer unserer Veranstaltungen vorbei! 
+            Wir freuen uns auf neue Gesichter und beantworten gerne alle Fragen über unsere Gemeinschaft. 
+            Kontaktiere uns oder besuche einfach einen unserer Stammtische.
+        </p>
+    </article>
+</main>
+
+<footer>
+    <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+    });
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+    });
+</script>
+
+</body>
+</html>

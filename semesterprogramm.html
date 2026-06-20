@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semesterprogramm - KDStV Nordmark</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/locales/de.global.min.js'></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="header-container">
+        <div class="logo-section">
+            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
+            <span class="site-title">KDStV Nordmark</span>
+        </div>
+
+        <nav>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html">Startseite</a></li>
+                <li><a href="ueber-nordmark.html">Über Nordmark</a></li>
+                <li><a href="semesterprogramm.html" class="nav-link-active">Semesterprogramm</a></li>
+                <li><a href="social-media.html">Social Media</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <button class="hamburger" id="hamburger" aria-label="Navigation umschalten">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb-bar visible" id="breadcrumb">Semesterprogramm</div>
+
+<!-- MAIN CONTENT -->
+<main>
+    <div class="page-header">
+        <h1>Semesterprogramm</h1>
+        <p>Alle Termine und Veranstaltungen im Überblick</p>
+    </div>
+
+    <article class="content-section">
+        <div class="pdf-viewer">
+           <object data="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
+                    type="application/pdf"
+                    class="pdf-object">
+               <iframe src="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
+                        class="pdf-iframe">
+                    Ihr Browser unterstützt die PDF-Anzeige nicht.
+                   <a href="Sempro_SoSe26_final.pdf">PDF herunterladen</a>
+                </iframe>
+            </object>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+           <a href="Sempro_SoSe26_final.pdf" class="button button-download" download>
+                📄 Semesterprogramm herunterladen
+            </a>
+        </div>
+
+        <hr style="margin: 3rem 0; border: none; border-top: 1px solid #ddd;">
+
+        <h2>Kalender</h2>
+        <p>Alle Termine im Überblick (klick auf einen Termin für mehr Details):</p>
+
+        <div id="calendar" class="calendar-container"></div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <a href="Semesterprogramm.ics" class="button button-download" download>
+                📅 Kalender herunterladen (ICS)
+            </a>
+        </div>
+    </article>
+
+    <!-- EVENT MODAL -->
+    <div id="eventModal" class="event-modal">
+        <div class="event-modal-content">
+            <button class="event-modal-close" onclick="closeEventModal()">&times;</button>
+            <h2 id="modalTitle"></h2>
+            <div class="event-modal-date" id="modalDate"></div>
+            <div class="event-modal-description" id="modalDescription"></div>
+        </div>
+    </div>
+
+    <!-- DAY MODAL -->
+    <div id="dayModal" class="event-modal">
+        <div class="event-modal-content">
+            <button class="event-modal-close" onclick="closeDayModal()">&times;</button>
+            <h2 id="dayModalTitle"></h2>
+            <div id="dayModalEvents"></div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+</footer>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        hamburger.classList.toggle('open');
+    });
+
+    navMenu.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+            navMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+        }
+    });
+
+    // Event descriptions
+    const eventDescriptions = {
+        'Semesterbeginn': 'Beginn des Sommersemesters 2026',
+        'Pessachmahl / Treffen zur Heiligen Messe': 'Pessachmahl und Treffen zur Heiligen Messe\nOrt: St. Dionysius\nAnmeldung unter ah.x@kdstv-nordmark.de',
+        'Vorlesungsbeginn': 'Vorlesungsbeginn des Sommersemesters 2026',
+        '1. AC': '1. Altherrenconvente des Semesters',
+        'Fahnenhisse und Hausbautag mit Grillen': 'Fahnenhisse und Hausbautag mit anschließendem Grillen',
+        'Besuch der heiligen Messe + Semesterantrittskneipe': '17:00 - Besuch der heiligen Messe in St. Dionysius\n20:00 c.t. - Semesterantrittskneipe\nOrt: Dionysiuskirchplatz 17, 45355 Essen',
+        'Fassanstich des Borbecker Maibocks': 'Fassanstich des Borbecker Maibocks\nOrt: Dampfe, Heinrich-Brauns-Straße 9-15, 45355 Essen',
+        'Führung durch die historische Abtei Werden': 'Führung durch die historische Abtei Werden mit Bbr. Priester André Üllenberg\nOrt: Brückstraße 54, 45239 Essen\nAnmeldung unter xx@kdstv-nordmark.de',
+        'Metverkostung': 'Sensorische Analyse fermentierter Honigweine',
+        '2. AC': '2. Altherrenconvente des Semesters',
+        'Borbecker Gottestracht': '395. Borbecker Gottestracht',
+        'Aktivenwanderung am Vatertag': 'Aktivenwanderung am Vatertag',
+        'Brandungskneipe': 'Brandungskneipe des Semesters',
+        '140. Cartellversammlung in Rom': '140. Cartellversammlung des Cartellverbandes in Rom',
+        '3. AC / 1. WC': '3. Altherrenconvente und 1. Wirtschaftsconvente des Semesters',
+        'Deutschland vs. Curaçao mit Grillen': 'Fußballübertragung Deutschland vs. Curaçao mit Grillen',
+        'RuhrCV Fuxenfahrt nach Bonn': 'RuhrCV Fuxenfahrt nach Bonn\nAnmeldung unter fm@kdstv-nordmark.de',
+        'Scoville und Promille + Fußball': '19:00 - Scoville und Promille (das scharfe Wettessen)\n22:00 s.t. - Fußballübertragung Deutschland vs. Ecuador',
+        'Hausbautag mit Grillen': 'Hausbautag mit anschließendem Grillen',
+        '97. Stiftungsfest': '97. Stiftungsfest der KDStV Nordmark',
+        'Einholen der Fahne im Stammtisch': 'Einholen der Fahne im Rahmen des Stammtisches',
+        '4. AC / 1. DC': '4. Altherrenconvente und 1. Damenconvente des Semesters',
+        'Vorlesungsende': 'Vorlesungsende des Sommersemesters 2026'
+    };
+
+    // All events
+    const allEvents = [
+        { title: 'Semesterbeginn', start: '2026-04-01' },
+        { title: 'Pessachmahl / Treffen zur Heiligen Messe', start: '2026-04-02T20:00:00' },
+        { title: 'Vorlesungsbeginn', start: '2026-04-13' },
+        { title: '1. AC', start: '2026-04-14T20:00:00' },
+        { title: 'Fahnenhisse und Hausbautag mit Grillen', start: '2026-04-15T20:00:00' },
+        { title: 'Besuch der heiligen Messe + Semesterantrittskneipe', start: '2026-04-18T17:00:00' },
+        { title: 'Fassanstich des Borbecker Maibocks', start: '2026-05-01T15:00:00' },
+        { title: 'Führung durch die historische Abtei Werden', start: '2026-05-02T11:00:00' },
+        { title: 'Metverkostung', start: '2026-05-05T20:00:00' },
+        { title: '2. AC', start: '2026-05-06T20:00:00' },
+        { title: 'Borbecker Gottestracht', start: '2026-05-10T09:30:00' },
+        { title: 'Aktivenwanderung am Vatertag', start: '2026-05-14T14:00:00' },
+        { title: 'Brandungskneipe', start: '2026-05-23T20:00:00' },
+        { title: '140. Cartellversammlung in Rom', start: '2026-06-04', end: '2026-06-08' },
+        { title: '3. AC / 1. WC', start: '2026-06-09T19:00:00' },
+        { title: 'Deutschland vs. Curaçao mit Grillen', start: '2026-06-14T19:00:00' },
+        { title: 'RuhrCV Fuxenfahrt nach Bonn', start: '2026-06-19' },
+        { title: 'Scoville und Promille + Fußball', start: '2026-06-25T19:00:00' },
+        { title: 'Hausbautag mit Grillen', start: '2026-06-30T17:00:00' },
+        { title: '97. Stiftungsfest', start: '2026-07-03', end: '2026-07-06' },
+        { title: 'Einholen der Fahne im Stammtisch', start: '2026-07-14T20:00:00' },
+        { title: '4. AC / 1. DC', start: '2026-07-15T20:00:00' },
+        { title: 'Hausbautag mit Grillen', start: '2026-07-21T17:00:00' },
+        { title: 'Vorlesungsende', start: '2026-07-24' }
+    ];
+
+    function formatDate(dateStr) {
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('de-DE', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+        });
+    }
+
+    function showEventModal(event) {
+        const modal = document.getElementById('eventModal');
+        const title = event.title;
+        const description = eventDescriptions[title] || 'Keine Beschreibung verfügbar';
+        
+        let dateStr = '';
+        if (event.start) {
+            const startDate = new Date(event.start);
+            dateStr = startDate.toLocaleDateString('de-DE', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: event.start.includes('T') ? '2-digit' : undefined,
+                minute: event.start.includes('T') ? '2-digit' : undefined
+            });
+        }
+
+        document.getElementById('modalTitle').textContent = title;
+        document.getElementById('modalDate').textContent = dateStr;
+        document.getElementById('modalDescription').textContent = description;
+        
+        modal.classList.add('show');
+    }
+
+    function showDayModal(dateStr) {
+        const modal = document.getElementById('dayModal');
+        const date = new Date(dateStr + 'T00:00:00');
+        const formattedDate = date.toLocaleDateString('de-DE', { 
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric'
+        });
+
+        // Find all events for this day (including multi-day events)
+        const dayEvents = allEvents.filter(event => {
+            const eventStart = new Date(event.start).toISOString().split('T')[0];
+            const eventEnd = event.end ? new Date(event.end).toISOString().split('T')[0] : eventStart;
+            
+            // Check if the clicked date falls within the event range
+            return dateStr >= eventStart && dateStr <= eventEnd;
+        });
+
+        let eventsHtml = '';
+        if (dayEvents.length === 0) {
+            eventsHtml = '<p style="color: #999;">Keine Termine an diesem Tag</p>';
+        } else {
+            eventsHtml = dayEvents.map(evt => {
+                const description = eventDescriptions[evt.title] || 'Keine Beschreibung';
+                let timeInfo = '';
+                
+                // Check if it's a multi-day event
+                if (evt.end) {
+                    const startDate = new Date(evt.start);
+                    const endDate = new Date(evt.end);
+                    const startStr = startDate.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'});
+                    const endStr = endDate.toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'});
+                    timeInfo = `<div style="color: #c41e3a; font-weight: 600; margin-bottom: 0.5rem;">${startStr} – ${endStr}</div>`;
+                } else if (evt.start.includes('T')) {
+                    const eventDate = new Date(evt.start);
+                    timeInfo = `<div style="color: #c41e3a; font-weight: 600; margin-bottom: 0.5rem;">${eventDate.toLocaleTimeString('de-DE', {hour: '2-digit', minute: '2-digit'})} Uhr</div>`;
+                }
+                
+                return `
+                    <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid #eee;">
+                        <h3 style="color: #1a1a1a; margin-top: 0; margin-bottom: 0.5rem;">${evt.title}</h3>
+                        ${timeInfo}
+                        <p style="color: #555; white-space: pre-wrap;">${description}</p>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        document.getElementById('dayModalTitle').textContent = formattedDate;
+        document.getElementById('dayModalEvents').innerHTML = eventsHtml;
+        
+        modal.classList.add('show');
+    }
+
+    function closeEventModal() {
+        document.getElementById('eventModal').classList.remove('show');
+    }
+
+    function closeDayModal() {
+        document.getElementById('dayModal').classList.remove('show');
+    }
+
+    // Close modals when clicking outside
+    document.getElementById('eventModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeEventModal();
+        }
+    });
+
+    document.getElementById('dayModal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            closeDayModal();
+        }
+    });
+
+    // FullCalendar Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            locale: 'de',
+            buttonText: {
+                today: 'Heute',
+                month: 'Monat',
+                list: 'Liste'
+            },
+            events: allEvents,
+            editable: false,
+            selectable: true,
+            eventDisplay: 'block',
+            eventColor: '#c41e3a',
+            eventContent: function(arg) {
+                // Show only the event title, no time
+                return { html: '<div style="font-size: 0.85em; padding: 2px 0;">' + arg.event.title + '</div>' };
+            },
+            eventDidMount: function(info) {
+                // Get the date of the day cell this event is rendered in
+                const dayElement = info.el.closest('[data-date]');
+                let dateStr = info.event.start.toISOString().split('T')[0];
+                
+                if (dayElement) {
+                    dateStr = dayElement.getAttribute('data-date');
+                }
+                
+                // Add click handler to show day modal
+                info.el.style.cursor = 'pointer';
+                info.el.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    showDayModal(dateStr);
+                });
+            },
+            dateClick: function(info) {
+                showDayModal(info.dateStr);
+            },
+            selectConstraint: 'businessHours'
+        });
+        calendar.render();
+    });
+</script>
+
+</body>
+</html>
