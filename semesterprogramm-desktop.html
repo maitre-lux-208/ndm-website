@@ -100,7 +100,7 @@
     <!-- EVENT MODAL -->
     <div id="eventModal" class="event-modal">
         <div class="event-modal-content">
-            <button class="event-modal-close">&times;</button>
+            <button class="event-modal-close" onclick="closeEventModal()">&times;</button>
             <h2 id="modalTitle"></h2>
             <div class="event-modal-date" id="modalDate"></div>
             <div class="event-modal-description" id="modalDescription"></div>
@@ -110,7 +110,7 @@
     <!-- DAY MODAL -->
     <div id="dayModal" class="event-modal">
         <div class="event-modal-content">
-            <button class="event-modal-close-day">&times;</button>
+            <button class="event-modal-close-day" onclick="closeDayModal()">&times;</button>
             <h2 id="dayModalTitle"></h2>
             <div id="dayModalEvents"></div>
         </div>
@@ -366,21 +366,6 @@
 
 <script src="wappen.js"></script>
 <script src="privacy.js"></script>
-
-<script>
-    // Safe event listener for modal close buttons
-    document.addEventListener('DOMContentLoaded', function() {
-        const closeEventButton = document.querySelector('.event-modal-close');
-        const closeDayButton = document.querySelector('.event-modal-close-day');
-        
-        if (closeEventButton) {
-            closeEventButton.addEventListener('click', closeEventModal);
-        }
-        if (closeDayButton) {
-            closeDayButton.addEventListener('click', closeDayModal);
-        }
-    });
-</script>
 
 </body>
 </html>
