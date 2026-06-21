@@ -142,7 +142,6 @@ header {
     font-weight: 400;
     display: none;
     font-family: "Gentium Book Basic", "Lucida Handwriting", "Monotype Corsiva", cursive;
-    text-transform: uppercase;
 }
 
 .breadcrumb-bar.visible {
