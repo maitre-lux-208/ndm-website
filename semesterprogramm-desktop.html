@@ -332,7 +332,7 @@
             eventColor: '#c41e3a',
             eventContent: function(arg) {
                 // Show only the event title, no time
-                return { html: '<div style="font-size: 0.85em; padding: 2px 0;">' + arg.event.title + '</div>' };
+                return { html: '<div style="font-size: 0.85em; padding: 2px 0; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block;">' + arg.event.title + '</div>' };
             },
             eventDidMount: function(info) {
                 // Get the date of the day cell this event is rendered in

@@ -417,10 +417,10 @@ main:has(.hero-with-bg) {
 .semesterprogramm-layout-desktop {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
     overflow-x: hidden;
-    padding: 2rem 0.5rem;
+    padding: 2rem 0.25rem;
     align-items: stretch;
     height: 900px;
 }
@@ -466,10 +466,10 @@ main:has(.hero-with-bg) {
 .semesterprogramm-buttons-desktop {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
     width: 100%;
     margin-top: 2rem;
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
 }
 
 .semesterprogramm-right .calendar-container {
@@ -480,6 +480,8 @@ main:has(.hero-with-bg) {
     font-size: 0.9rem;
     color: #333;
     margin: 0.5rem 0;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
     text-align: center;
     padding: 0.8rem 1.5rem;
     flex-shrink: 0;
@@ -527,13 +529,19 @@ main:has(.hero-with-bg) {
     padding: 0.8rem;
 }
 
-.fc-daygrid-day-frame {
-    min-height: 120px;
-}
-
 .fc-event-title {
     font-size: 0.9rem;
     padding: 0.5rem 0.3rem;
+    color: #000 !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+}
+
+.fc-daygrid-day-frame {
+    min-height: 120px;
+    overflow: hidden;
 }
 
 @media (min-width: 1025px) {
@@ -727,7 +735,7 @@ main:has(.hero-with-bg) {
 }
 
 .button-download {
-    margin: 1.5rem 0;
+    margin: 0.3rem 0;
 }
 
 /* ================================
@@ -793,6 +801,33 @@ main:has(.hero-with-bg) {
 .fc .fc-daygrid-day-frame {
     min-height: auto;
 }
+
+.fc-event {
+    color: #000 !important;
+}
+
+.fc-event-title {
+    color: #000 !important;
+}
+
+.fc .fc-daygrid-block-event .fc-event-title {
+    color: #000 !important;
+}
+
+.fc-daygrid-event {
+    overflow: hidden !important;
+}
+
+.fc-event-main {
+    overflow: hidden !important;
+}
+
+.fc-event-title {
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
 
 .fc-event-title {
     font-size: 0.8rem;

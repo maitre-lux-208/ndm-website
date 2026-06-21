@@ -59,13 +59,21 @@
     <article class="content-section">
         <div class="semesterprogramm-layout">
             <div class="semesterprogramm-right">
+                <div style="text-align: center; margin-bottom: 0.5rem;">
+                    <a href="Semesterprogramm.ics" class="button button-download" download>
+                       📅 Kalender herunterladen (ICS)
+                    </a>
+                </div>
+
                 <div id="calendar" class="calendar-container"></div>
 
                 <p class="calendar-info">Klick auf einen Termin für mehr Details</p>
 
-                <div style="text-align: center; margin: 2rem 0;">
-                    <a href="Semesterprogramm.ics" class="button button-download" download>
-                        📅 Kalender herunterladen (ICS)
+                <hr style="border: none; border-top: 1px solid #ccc; margin: 0.3rem 0;">
+
+                <div style="text-align: center; margin: 0.3rem 0;">
+                   <a href="Sempro_SoSe26_final.pdf" class="button button-download" download>
+                        📄 Semesterprogramm herunterladen
                     </a>
                 </div>
             </div>
@@ -81,12 +89,6 @@
                           <a href="Sempro_SoSe26_final.pdf">PDF herunterladen</a>
                        </iframe>
                     </object>
-                </div>
-
-                <div style="text-align: center; margin: 2rem 0;">
-                   <a href="Sempro_SoSe26_final.pdf" class="button button-download" download>
-                        📄 Semesterprogramm herunterladen
-                    </a>
                 </div>
             </div>
         </div>
@@ -332,7 +334,7 @@
             eventColor: '#c41e3a',
             eventContent: function(arg) {
                 // Show only the event title, no time
-                return { html: '<div style="font-size: 0.85em; padding: 2px 0;">' + arg.event.title + '</div>' };
+                return { html: '<div style="font-size: 0.85em; padding: 2px 0; color: #fff; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block;">' + arg.event.title + '</div>' };
             },
             eventDidMount: function(info) {
                 // Get the date of the day cell this event is rendered in
