@@ -628,6 +628,7 @@ main:has(.hero-with-bg) {
     background-position: center;
     background-color: rgba(0, 0, 0, 0.4);
     background-blend-mode: overlay;
+    background-attachment: fixed;
     color: white;
     padding: 8rem 1.5rem;
     border-radius: 0;
@@ -640,6 +641,8 @@ main:has(.hero-with-bg) {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    will-change: background-position;
+    contain: layout style paint;
 }
 
 .hero-with-bg h1 {
@@ -1271,6 +1274,7 @@ footer a:hover {
         margin: -140px calc(-50vw + 50%) 0 calc(-50vw + 50%);
         width: 100vw;
         min-height: 100vh;
+        background-attachment: scroll;
     }
 
     .hero-with-bg h1 {
@@ -1432,6 +1436,7 @@ footer a:hover {
         margin: -140px calc(-50vw + 50%) 0 calc(-50vw + 50%);
         width: 100vw;
         min-height: 100vh;
+        background-attachment: scroll;
     }
 
     .hero-with-bg h1 {
