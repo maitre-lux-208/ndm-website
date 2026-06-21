@@ -358,6 +358,32 @@ main:has(.hero-with-bg) {
     width: 100%;
 }
 
+.content-section-centered {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content-section-centered p {
+    text-align: center;
+}
+
+.content-section-centered h1,
+.content-section-centered h2,
+.content-section-centered h3,
+.content-section-centered h4 {
+    text-align: center;
+}
+
+.content-section-centered ul {
+    display: inline-block;
+    text-align: left;
+    margin: 0 auto;
+}
+
+.content-section-centered .principle-section {
+    justify-content: center;
+}
+
 .content-section-desktop {
     padding: 2rem 0;
     line-height: 1.8;
@@ -1069,8 +1095,8 @@ footer a:hover {
 }
 
 .principle-icon {
-   width: 100px;
-   height: 100px;
+   width: 140px;
+   height: 140px;
    flex-shrink: 0;
    object-fit: contain;
 }
@@ -1091,8 +1117,8 @@ footer a:hover {
 }
 
 .wappen-display img {
-   width: 450px;
-   height: 450px;
+   width: 700px;
+   height: 700px;
    object-fit: contain;
 }
 
@@ -1108,17 +1134,25 @@ footer a:hover {
    }
 
    .principle-icon {
-       width: 60px;
-       height: 60px;
+       width: 120px;
+       height: 120px;
    }
 
    .principle-content {
        text-align: center;
    }
 
+   .content-section-centered {
+       max-width: 100%;
+   }
+
+   .wappen-display {
+       overflow: visible;
+   }
+
    .wappen-display img {
-       width: 280px;
-       height: 280px;
+       width: 550px !important;
+       height: 550px !important;
    }
 
    .header-container {
@@ -1160,7 +1194,19 @@ footer a:hover {
     }
 
     main {
-        padding: 0 1.2rem;
+        padding: 0 0.5rem;
+    }
+
+    main:has(.semesterprogramm-layout) {
+        padding: 0;
+    }
+
+    .content-section {
+        padding: 1rem 0.5rem;
+    }
+
+    .semesterprogramm-layout {
+        padding: 0.5rem;
     }
 
     .page-header {
@@ -1208,7 +1254,7 @@ footer a:hover {
 
     .pdf-object,
     .pdf-iframe {
-        height: 800px;
+        height: 1000px;
     }
 
     .lightwidget-widget {
@@ -1235,9 +1281,10 @@ footer a:hover {
     }
 
     .calendar-container {
-        min-height: 600px;
+        min-height: 800px;
         margin-bottom: 0;
         margin-top: 0.1rem;
+        padding: 1.5rem 1rem;
     }
 
     .calendar-container + p {
@@ -1257,6 +1304,11 @@ footer a:hover {
     hr {
         margin: 0.5rem 0 !important;
     }
+
+   .wappen-display img {
+       width: 300px;
+       height: 300px;
+   }
 }
 
 /* ================================
@@ -1264,67 +1316,78 @@ footer a:hover {
    ================================ */
 
 @media (max-width: 480px) {
-    .header-container {
-        padding: 0.8rem 1rem;
-    }
+   .header-container {
+       padding: 0.8rem 1rem;
+   }
 
-    .logo-section img {
-        height: 40px;
-    }
+   .logo-section img {
+       height: 40px;
+   }
 
-    .page-header {
-        padding: 1.5rem 0 1rem;
-    }
+   .page-header {
+       padding: 1.5rem 0 1rem;
+   }
 
-    .page-header h1 {
-        font-size: 1.6rem;
-    }
+   .page-header h1 {
+       font-size: 1.6rem;
+   }
 
-    .page-header p {
-        font-size: 1rem;
-    }
+   .page-header p {
+       font-size: 1rem;
+   }
 
-    main {
-        padding: 0 1rem;
-    }
+   main {
+       padding: 0 0.5rem;
+   }
+
+   .wappen-display img {
+       width: 350px !important;
+       height: 350px !important;
+   }
+}
 
 @media (max-width: 480px) {
-    .header-container {
-        padding: 0.8rem 1rem;
-    }
+   .header-container {
+       padding: 0.8rem 1rem;
+   }
 
-    .logo-section img {
-        height: 40px;
-    }
+   .logo-section img {
+       height: 40px;
+   }
 
-    .page-header {
-        padding: 1.5rem 0 1rem;
-    }
+   .page-header {
+       padding: 1.5rem 0 1rem;
+   }
 
-    .page-header h1 {
-        font-size: 1.6rem;
-    }
+   .page-header h1 {
+       font-size: 1.6rem;
+   }
 
-    .page-header p {
-        font-size: 1rem;
-    }
+   .page-header p {
+       font-size: 1rem;
+   }
 
-    main {
-        padding: 0 1rem;
-    }
+   main {
+       padding: 0 0.5rem;
+   }
 
-    .hero {
-        padding: 2rem 1rem;
-        margin-bottom: 2rem;
-    }
+   .wappen-display img {
+       width: 260px;
+       height: 260px;
+   }
 
-    .hero h1 {
-        font-size: 1.7rem;
-    }
+   .hero {
+       padding: 2rem 1rem;
+       margin-bottom: 2rem;
+   }
 
-    .hero p {
-        font-size: 0.95rem;
-    }
+   .hero h1 {
+       font-size: 1.7rem;
+   }
+
+   .hero p {
+       font-size: 0.95rem;
+   }
 
     .hero-with-bg {
         padding: 4rem 1rem;
@@ -1381,4 +1444,4 @@ footer a:hover {
         padding: 1.5rem 1rem;
     }
 }
-}
+
