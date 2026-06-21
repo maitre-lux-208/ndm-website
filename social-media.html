@@ -50,11 +50,21 @@
         <div class="instagram-wrapper">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/kdstvnordmark/" data-instgrm-version="14"></blockquote>
         </div>
-        <script async src="https://www.instagram.com/embed.js"></script>
+        <script async src="https://www.instagram.com/embed.js" onload="if(window.instgrm)window.instgrm.Embeds.process();"></script>
         <script>
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
-            }
+            // Fallback for Firefox and other browsers where the script might not load immediately
+            window.addEventListener('load', function() {
+                if (window.instgrm && window.instgrm.Embeds) {
+                    window.instgrm.Embeds.process();
+                }
+            });
+            
+            // Additional retry mechanism for stubborn browsers
+            setTimeout(function() {
+                if (window.instgrm && window.instgrm.Embeds) {
+                    window.instgrm.Embeds.process();
+                }
+            }, 1000);
         </script>
     </article>
 </main>
