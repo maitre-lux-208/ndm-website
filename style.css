@@ -275,7 +275,7 @@ header {
 .hamburger span:nth-child(2) {
     top: 16px;
     background-color: #000000;
-    height: 5px;
+    height: 7px;
 }
 
 .hamburger span:nth-child(3) {
@@ -317,7 +317,7 @@ header {
     opacity: 1;
     animation: waveStripes 1.2s ease-in-out infinite;
     animation-delay: 0.3s;
-    box-shadow: inset 0 -1.5px 0 #808080;
+    box-shadow: inset 0 1px 0 #a9a9a9;
 }
 
 /* ================================
