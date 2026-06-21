@@ -54,9 +54,9 @@
         <div class="instagram-wrapper">
             <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/kdstvnordmark/" data-instgrm-version="14"></blockquote>
         </div>
-        <script async src="https://www.instagram.com/embed.js" onload="if(window.instgrm)window.instgrm.Embeds.process();"></script>
+        <script async src="https://www.instagram.com/embed.js" crossorigin="anonymous"></script>
         <script>
-            // Fallback for Firefox and other browsers where the script might not load immediately
+            // Safe event listener for Instagram embed processing
             window.addEventListener('load', function() {
                 if (window.instgrm && window.instgrm.Embeds) {
                     window.instgrm.Embeds.process();

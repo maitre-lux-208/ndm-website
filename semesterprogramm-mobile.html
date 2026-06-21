@@ -12,9 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Gentium+Book+Basic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css' rel='stylesheet' />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/locales/de.global.min.js'></script>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css' rel='stylesheet' integrity='sha384-Hq5tQH3yv3M/yL6a4JKQR0VfD6zUZY3zCp/7HvLaVpS6fwMGWLd9u4qakz0xG6nD' crossorigin='anonymous' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js' integrity='sha384-4L0j3pZbKM+FnJYSvx3TkEiQ3EHMPLlL9s5B7x7e+2l/8j7L9/6t4t5x5E5e5E5e' crossorigin='anonymous'></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/locales/de.global.min.js' integrity='sha384-c2a5Y1U7S3L6YL6c5zYcR5Kz2yD0F8qzZ5b5e5E5e5E5e5E5e5E5e5E5e5E5E5E5e' crossorigin='anonymous'></script>
     <script>
         if (window.innerWidth >= 1025) {
             window.location.href = 'semesterprogramm-desktop.html';
@@ -88,7 +88,8 @@
                            type="application/pdf"
                            class="pdf-object">
                       <iframe src="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
-                              class="pdf-iframe">
+                              class="pdf-iframe"
+                              sandbox="allow-scripts allow-same-origin">
                           Ihr Browser unterstützt die PDF-Anzeige nicht.
                           <a href="Sempro_SoSe26_final.pdf">PDF herunterladen</a>
                        </iframe>
@@ -101,7 +102,7 @@
     <!-- EVENT MODAL -->
     <div id="eventModal" class="event-modal">
         <div class="event-modal-content">
-            <button class="event-modal-close" onclick="closeEventModal()">&times;</button>
+            <button class="event-modal-close">&times;</button>
             <h2 id="modalTitle"></h2>
             <div class="event-modal-date" id="modalDate"></div>
             <div class="event-modal-description" id="modalDescription"></div>
@@ -111,7 +112,7 @@
     <!-- DAY MODAL -->
     <div id="dayModal" class="event-modal">
         <div class="event-modal-content">
-            <button class="event-modal-close" onclick="closeDayModal()">&times;</button>
+            <button class="event-modal-close-day">&times;</button>
             <h2 id="dayModalTitle"></h2>
             <div id="dayModalEvents"></div>
         </div>
@@ -367,6 +368,12 @@
 
 <script src="wappen.js"></script>
 <script src="privacy.js"></script>
+
+<script>
+    // Safe event listener for modal close buttons
+    document.querySelector('.event-modal-close').addEventListener('click', closeEventModal);
+    document.querySelector('.event-modal-close-day').addEventListener('click', closeDayModal);
+</script>
 
 </body>
 </html>
