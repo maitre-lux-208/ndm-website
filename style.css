@@ -1151,8 +1151,9 @@ footer a:hover {
    }
 
    .wappen-display img {
-       width: 550px !important;
-       height: 550px !important;
+       width: 100% !important;
+       height: auto !important;
+       max-width: 500px;
    }
 
    .header-container {
@@ -1341,8 +1342,9 @@ footer a:hover {
    }
 
    .wappen-display img {
-       width: 350px !important;
-       height: 350px !important;
+       width: 90% !important;
+       height: auto !important;
+       max-width: 300px;
    }
 }
 
