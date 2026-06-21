@@ -19,13 +19,25 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-y: scroll;
 }
 
 h1, h2, h3, h4 {
-    font-family: "Monotype Corsiva", "Segoe Script", "Lucida Handwriting", cursive;
+    font-family: "Gentium Book Basic", "Lucida Handwriting", "Monotype Corsiva", cursive;
     color: #1a1a1a;
     margin-bottom: 1rem;
+    margin-top: 1.5rem;
     line-height: 1.3;
+}
+
+h2 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+h3 {
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
 }
 
 a {
@@ -40,8 +52,73 @@ a:hover {
 }
 
 /* ================================
-   HEADER & NAVIGATION
+   WAPPEN ANIMATIONS
    ================================ */
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes flip {
+    from { transform: rotateY(0deg); }
+    to { transform: rotateY(360deg); }
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.wappen-animate {
+    animation: spin 0.6s ease-in-out, fadeInOut 0.6s ease-in-out;
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
+.wappen-animate.animation-bounce {
+    animation: bounce 0.6s ease-in-out, fadeInOut 0.6s ease-in-out;
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
+.wappen-animate.animation-shake {
+    animation: shake 0.6s ease-in-out, fadeInOut 0.6s ease-in-out;
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
+.wappen-animate.animation-pulse {
+    animation: pulse 0.6s ease-in-out, fadeInOut 0.6s ease-in-out;
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
+.wappen-animate.animation-flip {
+    animation: flip 0.6s ease-in-out, fadeInOut 0.6s ease-in-out;
+    perspective: 1000px;
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
+
 
 header {
     position: sticky;
@@ -57,13 +134,15 @@ header {
     position: sticky;
     top: 0;
     background-color: rgba(26, 26, 26, 0.95);
-    padding: 0.6rem 1.5rem;
+    padding: 0.4rem 1.5rem;
     z-index: 999;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: #f0f0f0;
-    font-size: 0.85rem;
+    font-size: 0.7rem;
     font-weight: 400;
     display: none;
+    font-family: "Gentium Book Basic", "Lucida Handwriting", "Monotype Corsiva", cursive;
+    text-transform: uppercase;
 }
 
 .breadcrumb-bar.visible {
@@ -88,15 +167,37 @@ header {
 }
 
 .logo-section img {
-    height: 120px;
-    width: auto;
+    height: 40px;
+    width: 40px;
+    flex-shrink: 0;
 }
 
 .site-title {
-    font-size: 1.4rem;
+    font-size: 2rem;
     font-weight: 400;
     color: #ffffff;
-    font-family: "Monotype Corsiva", "Segoe Script", "Lucida Handwriting", cursive;
+    font-family: "Gentium Book Basic", "Monotype Corsiva", "Lucida Handwriting", cursive;
+    line-height: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.logo-section a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    text-decoration: none;
+}
+
+.logo-section a:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .site-title {
+        font-size: 1.3rem;
+        margin-top: 0.5rem;
+    }
 }
 
 .nav-menu {
@@ -156,59 +257,68 @@ header {
 
 .hamburger span {
     display: block;
-    width: 35px;
-    height: 4px;
+    width: 40px;
+    height: 7px;
     background-color: #000000;
-    margin: 10px 0;
+    margin: 0;
     transition: all 0.3s ease;
     border-radius: 0;
     position: absolute;
-    left: 5px;
+    left: 2.5px;
 }
 
 .hamburger span:nth-child(1) {
-    top: 2px;
-    background-color: #000000;
+    top: 8px;
+    background-color: #c41e3a;
+    box-shadow: inset 0 1px 0 #a9a9a9;
 }
 
 .hamburger span:nth-child(2) {
-    top: 10px;
-    background-color: #c41e3a;
+    top: 16px;
+    background-color: #000000;
+    height: 5px;
 }
 
 .hamburger span:nth-child(3) {
-    top: 18px;
-    background-color: #000000;
+    top: 23.9px;
+    background-color: #c41e3a;
+    box-shadow: inset 0 -1px 0 #a9a9a9;
 }
 
 .hamburger span:nth-child(4) {
-    top: 26px;
+    top: 31px;
     opacity: 0;
 }
 
 .hamburger.open span:nth-child(1) {
+    top: 4px;
     background-color: #ffffff;
     animation: waveStripes 1.2s ease-in-out infinite;
     animation-delay: 0s;
 }
 
 .hamburger.open span:nth-child(2) {
+    top: 12px;
     background-color: #000000;
     animation: waveStripes 1.2s ease-in-out infinite;
     animation-delay: 0.1s;
 }
 
 .hamburger.open span:nth-child(3) {
+    top: 20px;
     background-color: #c41e3a;
     animation: waveStripes 1.2s ease-in-out infinite;
     animation-delay: 0.2s;
+    box-shadow: none;
 }
 
 .hamburger.open span:nth-child(4) {
+    top: 28px;
     background-color: #ffffff;
     opacity: 1;
     animation: waveStripes 1.2s ease-in-out infinite;
     animation-delay: 0.3s;
+    box-shadow: inset 0 -1.5px 0 #808080;
 }
 
 /* ================================
@@ -220,6 +330,12 @@ main {
     margin: 0 auto;
     padding: 0 1.5rem;
     flex: 1;
+}
+
+main:has(.semesterprogramm-layout),
+main:has(.semesterprogramm-layout-desktop) {
+    max-width: 100%;
+    padding: 0;
 }
 
 main.main-full-width {
@@ -239,6 +355,13 @@ main:has(.hero-with-bg) {
 .content-section {
     padding: 2rem 0;
     line-height: 1.8;
+    width: 100%;
+}
+
+.content-section-desktop {
+    padding: 2rem 0;
+    line-height: 1.8;
+    width: 100%;
 }
 
 .content-section p {
@@ -251,6 +374,170 @@ main:has(.hero-with-bg) {
     font-size: 1.8rem;
     margin: 2rem 0 1rem;
     margin-top: 2.5rem;
+}
+
+.semesterprogramm-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 90%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 2rem;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.semesterprogramm-layout-desktop {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    overflow-x: hidden;
+    padding: 2rem 0.5rem;
+    align-items: stretch;
+    height: 900px;
+}
+
+.semesterprogramm-left-desktop {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.semesterprogramm-right-desktop {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow-x: hidden;
+    height: 100%;
+}
+
+.semesterprogramm-left-desktop > .pdf-viewer {
+    height: 100%;
+    margin: 0;
+}
+
+.semesterprogramm-right-desktop > .calendar-container {
+    height: 100%;
+}
+
+@media (max-width: 1024px) {
+    .semesterprogramm-left-desktop > .pdf-viewer {
+        height: auto;
+        margin: 2rem 0;
+    }
+}
+
+.semesterprogramm-left > div:first-child {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.semesterprogramm-buttons-desktop {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 2rem;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0 0.5rem;
+}
+
+.semesterprogramm-right .calendar-container {
+    width: 100%;
+}
+
+.calendar-info {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0.5rem 0;
+    text-align: center;
+    padding: 0.8rem 1.5rem;
+    flex-shrink: 0;
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 4px;
+}
+
+.calendar-container {
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    min-width: 0;
+    flex-basis: auto;
+    min-height: 900px;
+}
+
+.fc {
+    overflow: hidden;
+    width: 100% !important;
+    height: 100%;
+}
+
+.fc table {
+    table-layout: fixed;
+    width: 100% !important;
+}
+
+.fc-col-header-cell,
+.fc-daygrid-day {
+    width: calc(100% / 7) !important;
+}
+
+.fc-col-header-cell {
+    font-size: 1.1rem;
+    padding: 1rem 0;
+}
+
+.fc-daygrid-day-number {
+    font-size: 1rem;
+    padding: 0.8rem;
+}
+
+.fc-daygrid-day-frame {
+    min-height: 120px;
+}
+
+.fc-event-title {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.3rem;
+}
+
+@media (min-width: 1025px) {
+    .semesterprogramm-left > div:first-child {
+        min-height: 900px;
+    }
+
+    .semesterprogramm-right .calendar-container {
+        min-height: 900px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .semesterprogramm-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        align-items: start;
+    }
+
+    .semesterprogramm-left {
+        grid-column: 1;
+    }
+
+    .semesterprogramm-right {
+        grid-column: 1;
+    }
+
+    .calendar-container {
+        min-height: auto;
+    }
 }
 
 .content-section h3 {
@@ -422,31 +709,25 @@ main:has(.hero-with-bg) {
    ================================ */
 
 .pdf-viewer {
-    margin: 2rem 0;
+    margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
     background: #f5f5f5;
     border: 1px solid #e0e0e0;
+    width: 100%;
+    max-width: 100%;
 }
 
 .pdf-object,
 .pdf-iframe {
     width: 100%;
-    height: 600px;
+    height: 900px;
     border: none;
 }
 
 /* ================================
    CALENDAR
    ================================ */
-
-.calendar-container {
-    margin: 2rem 0;
-    background: white;
-    border-radius: 8px;
-    padding: 1.5rem;
-    border: 1px solid #e0e0e0;
-}
 
 .fc {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -569,6 +850,55 @@ main:has(.hero-with-bg) {
    GALLERY / SOCIAL MEDIA
    ================================ */
 
+.instagram-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.instagram-media {
+    width: 100% !important;
+}
+
+.instagram-mobile-link {
+    display: block;
+    text-align: center;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin: 0 1rem 2rem 1rem;
+}
+
+.instagram-mobile-link a {
+    font-size: 1.1rem;
+    color: #c41e3a;
+    text-decoration: none;
+}
+
+.instagram-mobile-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .instagram-wrapper {
+        display: flex;
+        overflow: visible;
+        padding: 0;
+        margin: 0;
+    }
+
+    .instagram-media {
+        height: auto !important;
+        min-height: 600px;
+    }
+
+    .instagram-mobile-link {
+        display: block;
+        margin: 0 1rem 2rem 1rem;
+    }
+}
+
 .gallery {
     border-radius: 18px;
     padding: 0;
@@ -592,9 +922,35 @@ main:has(.hero-with-bg) {
 .contact-info {
     background: #f9f9f9;
     border-left: 4px solid #c41e3a;
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 4px;
     margin: 2rem 0;
+}
+
+.contact-info-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.button-contact {
+    padding: 0.75rem 1.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .contact-info-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .button-contact {
+        width: 100%;
+        text-align: center;
+    }
 }
 
 .contact-info p {
@@ -615,7 +971,129 @@ footer {
 }
 
 footer p {
+    margin: 0.5rem 0;
+}
+
+footer a {
+    color: #c41e3a;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   PRIVACY CONSENT BANNER
+   ================================ */
+
+#privacy-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    color: #f0f0f0;
+    padding: 1.5rem;
+    border-top: 2px solid #c41e3a;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+#privacy-banner.visible {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#privacy-banner p {
     margin: 0;
+    font-size: 0.95rem;
+    flex: 1;
+    min-width: 250px;
+}
+
+#privacy-banner .privacy-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+#privacy-banner button,
+#privacy-banner a.button {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+#privacy-accept {
+    background-color: #c41e3a;
+    color: white;
+}
+
+#privacy-accept:hover {
+    background-color: #a01830;
+}
+
+#privacy-link {
+    background-color: #c41e3a;
+    color: white;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 1;
+}
+
+#privacy-link:hover {
+    background-color: #a01830;
+}
+
+/* ================================
+   PRINCIPLES SECTION
+   ================================ */
+
+.principle-section {
+   display: flex;
+   gap: 2rem;
+   margin: 2.5rem 0;
+   align-items: flex-start;
+}
+
+.principle-icon {
+   width: 80px;
+   height: 80px;
+   flex-shrink: 0;
+   object-fit: contain;
+}
+
+.principle-content {
+   flex: 1;
+}
+
+.principle-content h4 {
+   margin-top: 0;
+   margin-bottom: 0.8rem;
+}
+
+.wappen-display {
+   text-align: center;
+   margin-top: 3rem;
+   margin-bottom: 2rem;
+}
+
+.wappen-display img {
+   width: 450px;
+   height: 450px;
+   object-fit: contain;
 }
 
 /* ================================
@@ -623,26 +1101,48 @@ footer p {
    ================================ */
 
 @media (max-width: 768px) {
-    .header-container {
-        padding: 1rem 1rem;
+   .principle-section {
+       flex-direction: column;
         gap: 1rem;
-    }
+       align-items: center;
+   }
 
-    .nav-menu {
-        display: none;
-    }
+   .principle-icon {
+       width: 60px;
+       height: 60px;
+   }
 
-    .nav-menu.open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: #1a1a1a;
+   .principle-content {
+       text-align: center;
+   }
+
+   .wappen-display img {
+       width: 280px;
+       height: 280px;
+   }
+
+   .header-container {
+       padding: 1rem 1rem;
+       gap: 1rem;
+   }
+
+   .nav-menu {
+       display: none;
+   }
+
+   .nav-menu.open {
+       display: flex;
+       flex-direction: column;
+       position: absolute;
+       top: 100%;
+       left: 0;
+       right: 0;
+       background: #1a1a1a;
         border-bottom: 1px solid #333;
         gap: 0;
         z-index: 999;
+        margin: 0;
+        padding: 0;
     }
 
     .nav-menu.open a {
@@ -707,12 +1207,54 @@ footer p {
 
     .pdf-object,
     .pdf-iframe {
-        height: 500px;
+        height: 800px;
     }
 
     .lightwidget-widget {
         max-width: 100%;
         height: 500px;
+    }
+
+    .pdf-viewer {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .pdf-viewer + div {
+        margin: 0 0 0 0;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .pdf-viewer + div .button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .calendar-container {
+        min-height: 600px;
+        margin-bottom: 0;
+        margin-top: 0.1rem;
+    }
+
+    .calendar-container + p {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .calendar-container + p + div .button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        margin: 0 0 0 0;
+    }
+
+    hr {
+        margin: 0.5rem 0 !important;
     }
 }
 
@@ -823,7 +1365,7 @@ footer p {
 
     .pdf-object,
     .pdf-iframe {
-        height: 400px;
+        height: 600px;
     }
 
     .lightwidget-widget {

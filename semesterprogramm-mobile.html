@@ -4,10 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semesterprogramm - KDStV Nordmark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Gentium+Book+Basic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css' rel='stylesheet' />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/locales/de.global.min.js'></script>
+    <script>
+        if (window.innerWidth >= 1025) {
+            window.location.href = 'semesterprogramm-desktop.html';
+        }
+    </script>
 </head>
 <body>
 
@@ -15,15 +23,15 @@
 <header>
     <div class="header-container">
         <div class="logo-section">
-            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
-            <span class="site-title">KDStV Nordmark</span>
+            <img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;">
+            <a href="index.html"><span class="site-title">KDStV Nordmark</span></a>
         </div>
 
         <nav>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Startseite</a></li>
                 <li><a href="ueber-nordmark.html">Über Nordmark</a></li>
-                <li><a href="semesterprogramm.html" class="nav-link-active">Semesterprogramm</a></li>
+                <li><a href="semesterprogramm-mobile.html" class="nav-link-active">Semesterprogramm</a></li>
                 <li><a href="social-media.html">Social Media</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
             </ul>
@@ -49,35 +57,38 @@
     </div>
 
     <article class="content-section">
-        <div class="pdf-viewer">
-           <object data="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
-                    type="application/pdf"
-                    class="pdf-object">
-               <iframe src="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
-                        class="pdf-iframe">
-                    Ihr Browser unterstützt die PDF-Anzeige nicht.
-                   <a href="Sempro_SoSe26_final.pdf">PDF herunterladen</a>
-                </iframe>
-            </object>
-        </div>
+        <div class="semesterprogramm-layout">
+            <div class="semesterprogramm-right">
+                <div id="calendar" class="calendar-container"></div>
 
-        <div style="text-align: center; margin: 2rem 0;">
-           <a href="Sempro_SoSe26_final.pdf" class="button button-download" download>
-                📄 Semesterprogramm herunterladen
-            </a>
-        </div>
+                <p class="calendar-info">Klick auf einen Termin für mehr Details</p>
 
-        <hr style="margin: 3rem 0; border: none; border-top: 1px solid #ddd;">
+                <div style="text-align: center; margin: 2rem 0;">
+                    <a href="Semesterprogramm.ics" class="button button-download" download>
+                        📅 Kalender herunterladen (ICS)
+                    </a>
+                </div>
+            </div>
 
-        <h2>Kalender</h2>
-        <p>Alle Termine im Überblick (klick auf einen Termin für mehr Details):</p>
+            <div class="semesterprogramm-left">
+                <div class="pdf-viewer">
+                   <object data="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
+                           type="application/pdf"
+                           class="pdf-object">
+                      <iframe src="Sempro_SoSe26_final.pdf#toolbar=1&view=FitH"
+                              class="pdf-iframe">
+                          Ihr Browser unterstützt die PDF-Anzeige nicht.
+                          <a href="Sempro_SoSe26_final.pdf">PDF herunterladen</a>
+                       </iframe>
+                    </object>
+                </div>
 
-        <div id="calendar" class="calendar-container"></div>
-
-        <div style="text-align: center; margin: 2rem 0;">
-            <a href="Semesterprogramm.ics" class="button button-download" download>
-                📅 Kalender herunterladen (ICS)
-            </a>
+                <div style="text-align: center; margin: 2rem 0;">
+                   <a href="Sempro_SoSe26_final.pdf" class="button button-download" download>
+                        📄 Semesterprogramm herunterladen
+                    </a>
+                </div>
+            </div>
         </div>
     </article>
 
@@ -103,7 +114,17 @@
 
 <footer>
     <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+    <p><a href="impressum.html">Impressum</a> & <a href="datenschutz.html">Datenschutz</a></p>
 </footer>
+
+<!-- PRIVACY CONSENT BANNER -->
+<div id="privacy-banner">
+    <p>Bitte beachte unsere Datenschutzerklärung. Wenn du die Website weiter nutzt, gehen wir von deinem Einverständnis aus.</p>
+    <div class="privacy-buttons">
+        <button id="privacy-accept">Ok</button>
+        <a href="datenschutz.html" id="privacy-link">Datenschutzerklärung</a>
+    </div>
+</div>
 
 <script>
     const hamburger = document.getElementById('hamburger');
@@ -292,6 +313,7 @@
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
             initialView: 'dayGridMonth',
+            firstDay: 1,
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -336,6 +358,9 @@
         calendar.render();
     });
 </script>
+
+<script src="wappen.js"></script>
+<script src="privacy.js"></script>
 
 </body>
 </html>

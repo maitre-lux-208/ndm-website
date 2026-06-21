@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruhr-CV - KDStV Nordmark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Gentium+Book+Basic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,14 +15,14 @@
 <header>
     <div class="header-container">
         <div class="logo-section">
-            <a href="index.html"><img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;"></a>
-            <span class="site-title">KDStV Nordmark</span>
+            <img src="images/Wappen.svg" alt="Wappen KDStV Nordmark" style="height: 40px;">
+            <a href="index.html"><span class="site-title">KDStV Nordmark</span></a>
         </div>
 
         <nav>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="index.html">Startseite</a></li>
-                <li><a href="semesterprogramm.html">Semesterprogramm</a></li>
+                <li><a href="semesterprogramm-mobile.html">Semesterprogramm</a></li>
                 <li><a href="social-media.html">Social Media</a></li>
                 <li><a href="ruhr-cv.html" class="nav-link-active">Ruhr-CV</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
@@ -72,7 +75,17 @@
 
 <footer>
     <p>&copy; 2025 KDStV Nordmark zu Essen</p>
+    <p><a href="impressum.html">Impressum</a> & <a href="datenschutz.html">Datenschutz</a></p>
 </footer>
+
+<!-- PRIVACY CONSENT BANNER -->
+<div id="privacy-banner">
+    <p>Bitte beachte unsere Datenschutzerklärung. Wenn du die Website weiter nutzt, gehen wir von deinem Einverständnis aus.</p>
+    <div class="privacy-buttons">
+        <button id="privacy-accept">Ok</button>
+        <a href="datenschutz.html" id="privacy-link">Datenschutzerklärung</a>
+    </div>
+</div>
 
 <script>
     const hamburger = document.getElementById('hamburger');
@@ -90,6 +103,9 @@
         }
     });
 </script>
+
+<script src="wappen.js"></script>
+<script src="privacy.js"></script>
 
 </body>
 </html>
